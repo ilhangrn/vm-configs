@@ -1,0 +1,100 @@
+# =============================================================================
+# Git Global Configuration Template
+# Copy to ~/.gitconfig and fill in your personal details.
+# =============================================================================
+
+[user]
+    name  = YOUR_FULL_NAME
+    email = YOUR_EMAIL@example.com
+
+[core]
+    # Use VS Code as the default editor
+    editor     = code --wait
+    # Line endings: true (Windows), input (Linux/macOS), false (keep as-is)
+    autocrlf   = input          # Change to "true" on Windows
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    pager      = less -FX
+
+[init]
+    defaultBranch = main
+
+[pull]
+    rebase = false
+
+[push]
+    default        = simple
+    autoSetupRemote = true
+
+[fetch]
+    prune = true
+
+[merge]
+    tool          = vscode
+    conflictstyle = diff3
+
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
+
+[diff]
+    tool      = vscode
+    colorMoved = default
+
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+
+[color]
+    ui = auto
+
+[color "branch"]
+    current  = yellow reverse
+    local    = yellow
+    remote   = green
+
+[color "diff"]
+    meta     = yellow bold
+    frag     = magenta bold
+    old      = red bold
+    new      = green bold
+    whitespace = red reverse
+
+[color "status"]
+    added     = yellow
+    changed   = green
+    untracked = cyan
+
+[alias]
+    # Shortcuts
+    st    = status
+    co    = checkout
+    br    = branch
+    ci    = commit
+    df    = diff
+
+    # Logging
+    lg    = log --oneline --graph --decorate --all
+    ll    = log --pretty=format:'%C(yellow)%h%Creset %ad | %s%d [%an]' --date=short
+    last  = log -1 HEAD --stat
+
+    # Undo helpers
+    unstage = reset HEAD --
+    undo    = reset --soft HEAD~1
+
+    # Stash helpers
+    ss    = stash save
+    sp    = stash pop
+    sl    = stash list
+
+    # Show contributors
+    who   = shortlog -sne
+
+[credential]
+    helper = store       # Linux; change to "manager-core" on Windows
+
+[http]
+    sslVerify = true
+
+[filter "lfs"]
+    clean    = git-lfs clean -- %f
+    smudge   = git-lfs smudge -- %f
+    process  = git-lfs filter-process
+    required = true

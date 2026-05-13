@@ -1,0 +1,38 @@
+# =============================================================================
+# SSH Client Configuration Template
+# Copy to ~/.ssh/config (chmod 600 ~/.ssh/config)
+# Reference: https://man.openbsd.org/ssh_config
+# =============================================================================
+
+# ─── Global Defaults ─────────────────────────────────────────────────────────
+Host *
+    ServerAliveInterval      60
+    ServerAliveCountMax       3
+    AddKeysToAgent           yes
+    IdentityFile             ~/.ssh/id_ed25519
+    # Reuse connections for faster subsequent connects
+    ControlMaster            auto
+    ControlPath              ~/.ssh/cm-%r@%h:%p
+    ControlPersist           10m
+
+# ─── GitHub ──────────────────────────────────────────────────────────────────
+Host github.com
+    HostName     github.com
+    User         git
+    IdentityFile ~/.ssh/id_ed25519
+
+# ─── Example Remote Development Server ──────────────────────────────────────
+# Replace with your actual server details
+# Host dev-server
+#     HostName     192.168.1.100     # or hostname
+#     User         your_username
+#     Port         22
+#     IdentityFile ~/.ssh/id_ed25519
+#     ForwardAgent yes
+
+# ─── Jump / Bastion Host Example ─────────────────────────────────────────────
+# Host internal-server
+#     HostName     10.0.0.50
+#     User         your_username
+#     ProxyJump    bastion.example.com
+#     IdentityFile ~/.ssh/id_ed25519
