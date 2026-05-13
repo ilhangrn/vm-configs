@@ -1,0 +1,21 @@
+name: Source Branch Check
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require PR from development branch
+        run: |
+          if [ "${{ github.head_ref }}" != "development" ]; then
+            echo "❌ PRs to main must originate from the 'development' branch."
+            echo "   Current source branch: ${{ github.head_ref }}"
+            exit 1
+          fi
+          echo "✅ Source branch is 'development'. Proceeding."
