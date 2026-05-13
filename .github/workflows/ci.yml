@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [main, development]
+  pull_request:
+    branches: [main, development]
+
+permissions:
+  contents: read
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # -------------------------------------------------------------------
+      # Python (uncomment when a Python project is added)
+      # -------------------------------------------------------------------
+      # - uses: actions/setup-python@v5
+      #   with:
+      #     python-version: "3.12"
+      # - run: pip install ruff mypy pytest
+      # - run: ruff check .
+      # - run: mypy .
+      # - run: pytest
+
+      # -------------------------------------------------------------------
+      # Rust (uncomment when a Rust project is added)
+      # -------------------------------------------------------------------
+      # - uses: dtolnay/rust-toolchain@stable
+      # - run: cargo fmt --check
+      # - run: cargo clippy -- -D warnings
+      # - run: cargo test
+
+      # -------------------------------------------------------------------
+      # Node / Web (uncomment when a web project is added)
+      # -------------------------------------------------------------------
+      # - uses: actions/setup-node@v4
+      #   with:
+      #     node-version: "22"
+      # - run: npm ci
+      # - run: npm run lint
+      # - run: npm test
+
+      - name: Placeholder (remove once real steps are added)
+        run: echo "CI pipeline ready — enable the relevant steps above."
