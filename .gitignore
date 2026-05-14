@@ -25,7 +25,7 @@ dist/
 !.env.example
 
 # Editor & IDE
-.vscode/
+# Note: .vscode/ is intentionally NOT ignored in this repo — it IS the config being tracked
 .idea/
 *.sublime-project
 *.sublime-workspace

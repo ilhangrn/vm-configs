@@ -1,0 +1,47 @@
+{
+  "recommendations": [
+    // ─── AI ──────────────────────────────────────────────────────────────────
+    "github.copilot",
+    "github.copilot-chat",
+
+    // ─── Git ─────────────────────────────────────────────────────────────────
+    "eamodio.gitlens",
+
+    // ─── Formatting ──────────────────────────────────────────────────────────
+    "esbenp.prettier-vscode",
+
+    // ─── Markdown ────────────────────────────────────────────────────────────
+    "bierner.markdown-mermaid",
+
+    // ─── YAML ────────────────────────────────────────────────────────────────
+    "redhat.vscode-yaml",
+
+    // ─── Python ──────────────────────────────────────────────────────────────
+    "ms-python.python",
+    "ms-python.black-formatter",
+    "ms-python.vscode-pylance",
+    "ms-python.mypy-type-checker",
+
+    // ─── Rust ────────────────────────────────────────────────────────────────
+    "rust-lang.rust-analyzer",
+
+    // ─── C / C++ ─────────────────────────────────────────────────────────────
+    "ms-vscode.cpptools",
+    "xaver.clang-format",
+    "ms-vscode.cmake-tools",
+
+    // ─── Remote / SSH ────────────────────────────────────────────────────────
+    "ms-vscode-remote.remote-ssh",
+    "ms-vscode-remote.remote-containers",
+
+    // ─── Database ────────────────────────────────────────────────────────────
+    "alexcvzz.vscode-sqlite",
+
+    // ─── Utilities ───────────────────────────────────────────────────────────
+    "streetsidesoftware.code-spell-checker",
+    "usernamehw.errorlens",
+    "wayou.vscode-todo-highlight",
+    "gruntfuggly.todo-tree",
+    "pkief.material-icon-theme"
+  ]
+}

@@ -1,0 +1,45 @@
+---
+# .clang-format
+# Reference: https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+
+Language: Cpp
+BasedOnStyle: LLVM
+
+# ─── Indentation ─────────────────────────────────────────────────────────────
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 100
+
+# ─── Braces ──────────────────────────────────────────────────────────────────
+BreakBeforeBraces: Attach
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+
+# ─── Spacing ─────────────────────────────────────────────────────────────────
+SpaceAfterCStyleCast: false
+SpaceBeforeParens: ControlStatements
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+SpacesInContainerLiterals: false
+
+# ─── Includes ────────────────────────────────────────────────────────────────
+SortIncludes: true
+IncludeBlocks: Regroup
+
+# ─── Pointers ────────────────────────────────────────────────────────────────
+PointerAlignment: Right
+ReferenceAlignment: Right
+
+# ─── Comments ────────────────────────────────────────────────────────────────
+ReflowComments: true
+CommentPragmas: '^ IWYU pragma:'
+
+# ─── Alignment ───────────────────────────────────────────────────────────────
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+AlignTrailingComments: true
+
+# ─── Trailing ────────────────────────────────────────────────────────────────
+InsertTrailingCommas: None

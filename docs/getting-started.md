@@ -1,87 +1,91 @@
 # Getting Started
 
-This is a template repository. Follow these steps to spin up a new project from it.
+This repository contains configuration files and setup scripts to bootstrap a
+fresh development machine quickly. Pick the guide for your operating system:
 
-## 1. Use the Template
+| Platform | Guide |
+|---|---|
+| Windows | [docs/windows-setup.md](windows-setup.md) |
+| Linux / Ubuntu | [docs/linux-setup.md](linux-setup.md) |
+| NixOS VM | [`nix/nixos-config.nix`](../nix/nixos-config.nix) |
 
-Click **"Use this template"** on GitHub and create a new repository for your project.
+---
 
-## 2. Clone Your New Repo
+## 1. Clone This Repository
 
 ```bash
-git clone https://github.com/<org>/<your-repo>.git
-cd <your-repo>
+git clone https://github.com/ilhangrn/configs.git
+cd configs
 ```
 
-## 3. Set Up Your Development Branch
+## 2. Run the Setup Script
 
-The branching model uses two core branches:
+### Windows (PowerShell as Administrator)
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force
+.\windows\setup.ps1
+```
+
+### Linux / Ubuntu
+
+```bash
+bash linux/setup.sh
+```
+
+Both scripts will:
+1. Create the standard folder structure
+2. Install all required applications and tools
+3. Configure Git, Zsh/PowerShell, and VS Code
+4. Generate an SSH key pair (if one doesn't exist)
+
+---
+
+## 3. Apply Config Files Manually (optional)
+
+If you only want specific configs without running the full setup:
+
+| Config | Source | Destination |
+|---|---|---|
+| VS Code settings | `vscode/settings.json` | `%APPDATA%\Code\User\settings.json` (Win) or `~/.config/Code/User/settings.json` (Linux) |
+| PowerShell profile | `windows/powershell/Microsoft.PowerShell_profile.ps1` | Path shown by `$PROFILE` |
+| Zsh config | `linux/zsh/.zshrc` | `~/.zshrc` |
+| Git config | `git/.gitconfig.template` | `~/.gitconfig` (fill in your details) |
+| SSH config | `ssh/config.example` | `~/.ssh/config` |
+| Python (black/pytest) | `python/pyproject.toml` | project root |
+| Python (tox) | `python/tox.ini` | project root |
+| Python (nox) | `python/noxfile.py` | project root |
+| Rust format | `rust/rustfmt.toml` | project root or `~/.rustfmt.toml` |
+| C format | `c/.clang-format` | project root |
+| Prettier | `node/.prettierrc` | project root |
+
+---
+
+## 4. Project Branching Model
 
 | Branch | Purpose |
 |---|---|
 | `main` | Stable, production-ready |
 | `development` | Active integration branch |
 
-If `development` doesn't exist yet:
-
 ```bash
 git checkout -b development
 git push -u origin development
 ```
 
-## 4. Project Type Quick-Start
-
-### Python
-```bash
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-```
-
-### Rust
-```bash
-cargo new my_project
-cd my_project
-cargo run
-```
-
-### Web (Node / TypeScript)
-```bash
-npm create vite@latest my-app
-cd my-app
-npm install
-npm run dev
-```
-
-### Mobile (Flutter)
-```bash
-flutter create my_app
-cd my_app
-flutter run
-```
-
-### AI / ML (Python)
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install torch transformers datasets
-```
-
-### Agentic / LLM Applications
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install openai anthropic langchain
-```
+---
 
 ## 5. Enable CI
 
 The `.github/workflows/ci.yml` file contains pre-written steps for each language.  
 Uncomment the relevant block for your project type.
 
+---
+
 ## 6. Next Steps
 
-- Update `README.md` with your project's details.
-- Review `CONTRIBUTING.md` and adjust to your team's workflow.
-- Add environment-specific config files (`.env.example`, `config/`, etc.).
-- Configure branch protection rulesets in GitHub repository settings.
+- Sign in to **GitHub Copilot** in VS Code (`Ctrl+Shift+P` → `GitHub Copilot: Sign In`).
+- Configure **ProtonVPN** with your account.
+- Add your SSH public key to GitHub: Settings → SSH and GPG keys.
+- Install **Brave** browser extensions: Notion, Dark Reader, Tab Manager Plus.
+- Import branch-protection rulesets from `centa_ruleset.json`.
