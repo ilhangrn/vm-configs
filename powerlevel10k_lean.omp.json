@@ -1,0 +1,69 @@
+{
+  "$schema": "def_schema.json",
+  "version": 4,
+  "blocks": [
+    {
+      "alignment": "left",
+      "type": "prompt",
+      "segments": [
+        {
+          "type": "path",
+          "style": "plain",
+          "foreground": "#77E4F7",
+          "template": "{{ .Path }} ",
+          "options": { "style": "agnoster_short", "max_depth": 3 }
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "#FFE700",
+          "template": "on {{ .HEAD }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} ${{ .Working.String }}{{ end }}{{ if .Staging.Changed }} +{{ .Staging.String }}{{ end }} "
+        }
+      ]
+    },
+    {
+      "alignment": "right",
+      "type": "rprompt",
+      "overflow": "hide",
+      "segments": [
+        {
+          "type": "node",
+          "style": "plain",
+          "foreground": "#68A063",
+          "template": "⬢ {{ .Full }} ",
+          "options": { "fetch_version": true, "display_mode": "context" }
+        },
+        {
+          "type": "rust",
+          "style": "plain",
+          "foreground": "#CE422B",
+          "template": "🦀 {{ .Full }} ",
+          "options": { "fetch_version": true, "display_mode": "context" }
+        },
+        {
+          "type": "python",
+          "style": "plain",
+          "foreground": "#4FC3F7",
+          "template": "🐍 {{ .Full }}{{ if .Venv }} ({{ .Venv }}){{ end }} ",
+          "options": {
+            "display_mode": "always",
+            "fetch_version": true
+          }
+        }
+      ]
+    },
+    {
+      "alignment": "left",
+      "type": "prompt",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#43D426",
+          "template": "❯ "
+        }
+      ]
+    }
+  ]
+}
